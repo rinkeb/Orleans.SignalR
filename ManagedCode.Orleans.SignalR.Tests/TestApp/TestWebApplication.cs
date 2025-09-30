@@ -12,7 +12,7 @@ namespace ManagedCode.Orleans.SignalR.Tests.TestApp;
 
 public class TestWebApplication : WebApplicationFactory<HttpHostProgram>
 {
-    private readonly TestCluster _cluster;
+    private readonly InProcessTestCluster _cluster;
     private readonly int _port;
     private readonly bool _useOrleans;
 

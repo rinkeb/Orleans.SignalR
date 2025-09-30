@@ -151,10 +151,10 @@ public class StressTests
         var signalRInvocationGrainCount = await _siloCluster.Cluster.Client.GetGrain<IManagementGrain>(0).GetActiveGrains(GrainType.Create($"ManagedCode.{nameof(SignalRInvocationGrain)}"));
         var signalRUserGrainCount = await _siloCluster.Cluster.Client.GetGrain<IManagementGrain>(0).GetActiveGrains(GrainType.Create($"ManagedCode.{nameof(SignalRUserGrain)}"));
 
-        signalRConnectionHolderGrainCount.Count.Should().BeGreaterOrEqualTo(0);
-        signalRGroupGrainCount.Count.Should().BeGreaterOrEqualTo(0);
-        signalRInvocationGrainCount.Count.Should().BeGreaterOrEqualTo(0);
-        signalRUserGrainCount.Count.Should().BeGreaterOrEqualTo(0);
+        signalRConnectionHolderGrainCount.Count.Should().BeGreaterThanOrEqualTo(0);
+        signalRGroupGrainCount.Count.Should().BeGreaterThanOrEqualTo(0);
+        signalRInvocationGrainCount.Count.Should().BeGreaterThanOrEqualTo(0);
+        signalRUserGrainCount.Count.Should().BeGreaterThanOrEqualTo(0);
         
 
         var hubConnection = await CreateHubConnection("user", _firstApp, nameof(SimpleTestHub));
@@ -172,10 +172,10 @@ public class StressTests
         signalRInvocationGrainCount = await _siloCluster.Cluster.Client.GetGrain<IManagementGrain>(0).GetActiveGrains(GrainType.Create($"ManagedCode.{nameof(SignalRInvocationGrain)}"));
         signalRUserGrainCount = await _siloCluster.Cluster.Client.GetGrain<IManagementGrain>(0).GetActiveGrains(GrainType.Create($"ManagedCode.{nameof(SignalRUserGrain)}"));
 
-        signalRConnectionHolderGrainCount.Count.Should().BeGreaterOrEqualTo(1);
-        signalRGroupGrainCount.Count.Should().BeGreaterOrEqualTo(1);
-        signalRInvocationGrainCount.Count.Should().BeGreaterOrEqualTo(1);
-        signalRUserGrainCount.Count.Should().BeGreaterOrEqualTo(1);
+        signalRConnectionHolderGrainCount.Count.Should().BeGreaterThanOrEqualTo(1);
+        signalRGroupGrainCount.Count.Should().BeGreaterThanOrEqualTo(1);
+        signalRInvocationGrainCount.Count.Should().BeGreaterThanOrEqualTo(1);
+        signalRUserGrainCount.Count.Should().BeGreaterThanOrEqualTo(1);
         _outputHelper.WriteLine($"ConnectionHolder:{signalRConnectionHolderGrainCount.Count};GroupGrain:{signalRGroupGrainCount.Count}; InvocationGrain:{signalRInvocationGrainCount.Count}; UserGrain:{signalRUserGrainCount.Count};");
 
         

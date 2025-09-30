@@ -92,7 +92,7 @@ public class HubTests
         await Task.Delay(TimeSpan.FromSeconds(5));
         message.Should().Be("test");
         result.Should().BeGreaterThan(0);
-        result.Should().BeLessOrEqualTo(100);
+        result.Should().BeLessThanOrEqualTo(100);
         
         await hubConnection.StopAsync();
         hubConnection.State.Should().Be(HubConnectionState.Disconnected);
@@ -184,7 +184,7 @@ public class HubTests
 
 
         messages1.Count.Should().Be(2);
-        messages2.Count.Should().BeGreaterOrEqualTo(1);
+        messages2.Count.Should().BeGreaterThanOrEqualTo(1);
     }
 
     [Fact]
